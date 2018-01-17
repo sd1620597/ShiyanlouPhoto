@@ -4,9 +4,8 @@ node{
     }
     stage('SonarQube analysis') {
         def sonar_home = tool name: 'sonar_scanner';
-            withSonarQubeEnv('sonar_service') {
-                sh "${sonar_home}/bin/sonar-scanner"
-            }
+        withSonarQubeEnv('sonar_service') {
+            sh "${sonar_home}/bin/sonar-scanner"
         }
     }
     stage('mvn build'){
