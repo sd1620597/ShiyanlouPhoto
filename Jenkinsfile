@@ -5,7 +5,7 @@ node{
     stage('SonarQube analysis') {
         def sonar_home = tool name: 'sonar_scanner';
         withSonarQubeEnv('sonar_service') {
-            sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME} -Dsonar.sources=./src -Dsonar.java.binaries=WebRoot/WEB-INF/classes"
+            sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME} -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
         }
     }
     stage('mvn build'){
