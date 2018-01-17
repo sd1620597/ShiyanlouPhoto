@@ -1,6 +1,9 @@
 pipeline {
     agent any
     stages {
+        stage('SCM') {
+            checkout scm
+        }
         stage('SonarQube analysis') {
             //def sonarqubeScannerHome = tool name: 'sonar_scanner'
             def sonar_scanner = tool name: 'sonar_scanner';
