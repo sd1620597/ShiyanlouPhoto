@@ -1,13 +1,13 @@
 node{
-    stage("Human: Select Action") {                                                                                                                                                                                                      
-            agent none                                                                                                                                                                                                                       
-            steps {                                                                                                                                                                                                                          
-                script {                                                                                                                                                                                                                     
-                    env.SONNAR = input message: 'Run sonar-scanner or not?',                                                                                                                                                                          
-                        parameters: [choice(name: 'ACTION', choices: 'yes\nno')]                                                                                                                                                   
-                }                                                                                                                                                                                                                            
-            }                                                                                                                                                                                                                                
-        }
+    agent any
+    stage("Human: Select Action") {                                                                                                                                                                                                                                                                                                                                                                                                                  
+        steps {                                                                                                                                                                                                                          
+            script {                                                                                                                                                                                                                     
+                env.SONNAR = input message: 'Run sonar-scanner or not?',                                                                                                                                                                          
+                parameters: [choice(name: 'ACTION', choices: 'yes\nno')]                                                                                                                                                   
+            }                                                                                                                                                                                                                         
+        }                                                                                                                                                                                                                                
+    }
     stage('checkout'){
         checkout scm
     }
