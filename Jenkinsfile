@@ -19,11 +19,9 @@ pipeline{
                 //expression { env.SONNAR == 'yes' }
                 environment name : 'SONNAR', value : 'yes'
             }
-            steps {
-                def sonar_home = tool name: 'sonar_scanner'
-                withSonarQubeEnv('sonar_service') {
-                    sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME} -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
-                }
+            def sonar_home = tool name: 'sonar_scanner'
+            withSonarQubeEnv('sonar_service') {
+                sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME} -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
             }
         }
         stage('mvn build'){
