@@ -23,10 +23,8 @@ pipeline{
                 script {
                     def sonar_home = tool name: 'sonar_scanner'
                 }
-                agent {
-                    withSonarQubeEnv('sonar_service') {
-                        sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME} -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
-                    }
+                withSonarQubeEnv('sonar_service') {
+                    sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME} -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
                 }
             }
         }
