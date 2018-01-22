@@ -23,12 +23,16 @@ pipeline{
             }
         }
         stage('mvn build'){
-            //mvn构建
-            sh "mvn clean install"
+            steps{
+                //mvn构建
+                sh "mvn clean install"
+            }
         }
         stage('deploy'){
-            //执行部署脚本
-            echo "deploy ......" 
+            steps{
+                //执行部署脚本
+                echo "deploy ......" 
+            }
         }
     }
 }
