@@ -1,5 +1,4 @@
 node{
-    agent any
     stage("Human: Select Action") {                                                                                                                                                                                                                                                                                                                                                                                                                  
         steps {                                                                                                                                                                                                                          
             script {                                                                                                                                                                                                                     
