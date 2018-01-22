@@ -19,10 +19,12 @@ pipeline{
                 //expression { env.SONNAR == 'yes' }
                 environment name : 'SONNAR', value : 'yes'
             }
-            node {
-                def sonar_home = tool name: 'sonar_scanner';
-                withSonarQubeEnv('sonar_service') {
-                    sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME} -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
+            steps {
+                node {
+                    def sonar_home = tool name: 'sonar_scanner';
+                    withSonarQubeEnv('sonar_service') {
+                        sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME} -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
+                    }
                 }
             }
         }
