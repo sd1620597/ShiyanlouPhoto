@@ -1,6 +1,8 @@
 pipeline{
     agent any
-    choice(name: 'env.SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
+    parameters {
+        choice(name: 'env.SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
+    }
     stages {
         //stage("Human: Select Action") {
         //    steps{
