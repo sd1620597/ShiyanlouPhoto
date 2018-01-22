@@ -19,7 +19,7 @@ pipeline{
         //}
         stage('SonarQube analysis') {
             when {
-                expression { DO_SONNAR == 'yes' }
+                expression { ${DO_SONNAR} == 'yes' }
                 //environment name : 'SONNAR', value : 'yes'
             }
             steps {
