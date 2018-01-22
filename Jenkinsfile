@@ -21,7 +21,7 @@ pipeline{
             }
             steps {
                 script {
-                    def sonar_home = tool name: 'sonar_scanner'
+                    sonar_home = tool name: 'sonar_scanner'
                 }
                 def sonar_home = tool 'sonar_scanner'
                 withSonarQubeEnv('sonar_service') {
