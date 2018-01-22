@@ -8,7 +8,9 @@ node{
         }                                                                                                                                                                                                                                
     }
     stage('checkout'){
-        checkout scm
+        steps{
+            checkout scm
+        }
     }
     stage('SonarQube analysis') {
         when{
