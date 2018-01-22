@@ -9,11 +9,11 @@ pipeline{
                 }
             }
         }
-        stage('checkout'){
-            steps{
-                checkout scm
-            }
-        }
+        //stage('checkout'){
+        //    steps{
+        //        checkout scm
+        //    }
+        //}
         stage('SonarQube analysis') {
             when {
                 //expression { env.SONNAR == 'yes' }
