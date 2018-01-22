@@ -20,8 +20,10 @@ pipeline{
                 environment name : 'SONNAR', value : 'yes'
             }
             steps {
+                script {
+                    def sonar_home = tool name: 'sonar_scanner'
+                }
                 node {
-                    def sonar_home = tool name: 'sonar_scanner';
                     withSonarQubeEnv('sonar_service') {
                         sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME} -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
                     }
