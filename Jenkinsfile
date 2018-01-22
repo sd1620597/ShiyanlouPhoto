@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters {
-        choice(name: 'DO_SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
+        choice(name: 'evn.SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
     }
     stages {
         //stage("Human: Select Action") {
@@ -19,8 +19,8 @@ pipeline{
         //}
         stage('SonarQube analysis') {
             when {
-                expression { ${DO_SONNAR} == 'yes' }
-                //environment name : 'SONNAR', value : 'yes'
+                //expression { ${DO_SONNAR} == 'yes' }
+                environment name : 'evn.SONNAR', value : 'yes'
             }
             steps {
                 script {
