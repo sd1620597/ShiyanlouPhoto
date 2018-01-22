@@ -9,7 +9,7 @@ node{
         checkout scm
     }
     stage('SonarQube analysis') {
-        when{
+        when {
             //expression { env.SONNAR == 'yes' }
             environment name : 'SONNAR',
             value : 'yes'
