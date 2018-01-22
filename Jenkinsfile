@@ -1,4 +1,5 @@
-node{
+pipeline{
+    agent any
     stage("Human: Select Action") {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
         script {                                                                                                                                                                                                                     
             env.SONNAR = input message: 'Run sonar-scanner or not?',
@@ -11,8 +12,7 @@ node{
     stage('SonarQube analysis') {
         when {
             //expression { env.SONNAR == 'yes' }
-            environment name : 'SONNAR',
-            value : 'yes'
+            environment name : 'SONNAR', value : 'yes'
         }
         steps {
             def sonar_home = tool name: 'sonar_scanner';
