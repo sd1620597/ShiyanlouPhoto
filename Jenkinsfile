@@ -1,4 +1,5 @@
 node{
+    stages{
     stage("Human: Select Action") {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
         script {                                                                                                                                                                                                                     
             env.SONNAR = input message: 'Run sonar-scanner or not?',
@@ -27,4 +28,5 @@ node{
         //执行部署脚本
         echo "deploy ......" 
     }
+}
 }
