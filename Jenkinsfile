@@ -1,10 +1,12 @@
 pipeline{
     agent any
     stages {
-        stage("Human: Select Action") {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-            script {                                                                                                                                                                                                                     
-                env.SONNAR = input message: 'Run sonar-scanner or not?',
-                parameters: [choice(name: 'ACTION', choices: 'yes\nno')]
+        stage("Human: Select Action") {
+            steps{
+                script {                                                                                                                                                                                                                     
+                    env.SONNAR = input message: 'Run sonar-scanner or not?',
+                    parameters: [choice(name: 'ACTION', choices: 'yes\nno')]
+                }
             }
         }
         stage('checkout'){
