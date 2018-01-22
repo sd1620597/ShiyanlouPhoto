@@ -1,5 +1,4 @@
 node{
-    stages{
     stage("Human: Select Action") {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
         script {                                                                                                                                                                                                                     
             env.SONNAR = input message: 'Run sonar-scanner or not?',
@@ -11,7 +10,9 @@ node{
     }
     stage('SonarQube analysis') {
         when{
-            expression { env.SONNAR == 'yes' }
+            //expression { env.SONNAR == 'yes' }
+            environment name : 'SONNAR',
+            value : 'yes'
         }
         steps {
             def sonar_home = tool name: 'sonar_scanner';
@@ -28,5 +29,4 @@ node{
         //执行部署脚本
         echo "deploy ......" 
     }
-}
 }
