@@ -33,22 +33,7 @@ pipeline{
                         parameters: [choice(name: 'DO_DEPLOY',choices: 'test\nonline',description:'选择构建环境')]
                     }
                 }
-            }
-        }
-        stage("Deploy test") {
-            when {
-                expression { params.DO_DEPLOY == 'test' }
-            }
-            steps{
-                echo '正在构建测试环境'
-            }
-        }
-        stage("Deploy online"){
-            when {
-                expression { params.DO_DEPLOY == 'online' }
-            }
-            steps{
-                echo '正在构建生产环境'
+                echo '正在构建${params.DO_DEPLOY}'
             }
         }
     }
