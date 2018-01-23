@@ -37,7 +37,7 @@ pipeline{
                             choice(name: 'DO_DEPLOY_ONLINE', choices: '测试环境\n开发环境')]
                     }
                 }
-                echo ${env.DO_DEPLOY}
+                echo "${env.DO_DEPLOY}"
             }
         }
     }
