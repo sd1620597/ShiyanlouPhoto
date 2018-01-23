@@ -38,8 +38,8 @@ pipeline{
                         ]
                     }
                 }
-                echo "${env.DEPLOY["TEST"]}"
-                echo "${env.DEPLOY["ONLINE"]}"
+                //echo "${env.DEPLOY["TEST"]}"
+                //echo "${env.DEPLOY["ONLINE"]}"
             }
         }
     }
