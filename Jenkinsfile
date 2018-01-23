@@ -33,7 +33,8 @@ pipeline{
                     timeout(time:1,unit:'HOURS'){
                         env.DO_DEPLOY=input message: "构建配置",
                         parameters: [
-                            choice(name: 'env.TEST', choices: '部署测试环境\n不部署测试环境')]
+                            choice(name: 'TEST', choices: '部署测试环境\n不部署测试环境'),
+                            choice(name: 'TEST', choices: '111\n222')]
                     }
                 }
                 echo "${env.DO_DEPLOY}"
