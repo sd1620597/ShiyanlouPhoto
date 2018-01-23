@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters {
-        choice(name: 'DO_SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?',defaultChoice: 'no')
+        choice(name: 'DO_SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
         string(name: 'GIT_BRANCH', defaultValue: 'dev', description: '请输入需要构建的分支')
     }
     stages {
@@ -33,8 +33,8 @@ pipeline{
                     timeout(time:1,unit:'HOURS'){
                         IS_DEPLOY = input message: "构建配置",
                         parameters: [
-                            choice(name: 'TEST', choices: 'yes\nno' ,description: '是否部署测试环境'),
-                            choice(name: 'ONLINE', choices: 'yes\nno',description: '是否部署生产环境')
+                            choice(name: 'TEST', choices: 'yes\nno' ,description: '是否部署测试环境' ,defaultChoice: 'no'),
+                            choice(name: 'ONLINE', choices: 'yes\nno',description: '是否部署生产环境' ,defaultChoice: 'no')
                         ]
                     }
                 }
