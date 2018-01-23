@@ -27,9 +27,7 @@ pipeline{
         stage("Human: Deploy") {
             steps{
                 script {
-                    timeout(time:30,unit:'SECONDS'){
-                        //input message: '请选择需要部署的环境',ok: '开始部署',submitter：'这是什么。。',
-                        input message: '构建配置',
+                    input message: '构建配置',
                         parameters: [
                             choice(
                                 name: 'DO_DEPLOY',
@@ -38,8 +36,8 @@ pipeline{
                             )
                         ]
                     }
+                    echo "正在部署${DO_DEPLOY}"
                 }
-                echo "正在部署${DO_DEPLOY}"
             }
         }
     }
