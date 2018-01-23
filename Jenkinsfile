@@ -35,7 +35,7 @@ pipeline{
                         parameters: [choice(name: 'TEST', choices: '部署测试环境\n不部署测试环境')]
                     }
                 }
-                echo params.TEST
+                echo TEST
             }
         }
     }
