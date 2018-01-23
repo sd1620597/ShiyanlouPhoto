@@ -26,8 +26,8 @@ pipeline{
         }
         stage("Human: Deploy") {
             input {
-                message: '构建配置',
-                ok:"ok",
+                message: '构建配置'
+                ok:"ok"
                 parameters: [choice(name: 'DO_DEPLOY',choices: '测试环境\n生产环境',description:'选择构建环境')]
             }
             steps{
