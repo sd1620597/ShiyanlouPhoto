@@ -26,9 +26,7 @@ pipeline{
             }
         }
         stage("Human: Deploy") {
-            input {
-                message "构建配置"
-            }
+
             steps{
                 //script {
                 //    timeout(time:1,unit:'HOURS'){
@@ -38,6 +36,9 @@ pipeline{
                 //    }
                 //}
                 //echo "正在构建${env.DO_DEPLOY}"
+                input {
+                    message "构建配置"
+                }
             }
         }
     }
