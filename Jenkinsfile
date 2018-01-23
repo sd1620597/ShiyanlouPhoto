@@ -37,7 +37,6 @@ pipeline{
                 //echo "正在构建${env.DO_DEPLOY}"
                 input {
                     message "构建配置"
-                    ok "go~"
                 }
             }
         }
