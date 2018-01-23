@@ -32,8 +32,10 @@ pipeline{
                 script {
                     timeout(time:1,unit:'HOURS'){
                         env.DEPLOY = input message: "构建配置",
-                        parameters: [choice(name: 'TEST', choices: '部署测试环境\n不部署测试环境'),
-                        parameters: [choice(name: 'ONLINE', choices: '部署生产环境\n不部署生产环境')]
+                        parameters: [
+                            choice(name: 'TEST', choices: '部署测试环境\n不部署测试环境'),
+                            choice(name: 'ONLINE', choices: '部署生产环境\n不部署生产环境')
+                        ]
                     }
                 }
                 echo "${env.DEPLOY["TEST"]}"
