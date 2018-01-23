@@ -37,7 +37,7 @@ pipeline{
                                 )
                             ]
                     }
-                    echo "正在部署"DO_DEPLOY
+                    echo "正在部署"${DO_DEPLOY}
                 }
             }
         }
