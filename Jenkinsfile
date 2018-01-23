@@ -4,19 +4,6 @@ pipeline{
         choice(name: 'DO_SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
     }
     stages {
-        //stage("Human: Select Action") {
-        //    steps{
-        //        script {                                                                                                                                                                                                                     
-        //            env.SONNAR = input message: 'Run sonar-scanner or not?',
-        //            parameters: [choice(name: 'ACTION', choices: 'yes\nno')]
-        //        }
-        //    }
-        //}
-        //stage('checkout'){
-        //    steps{
-        //        checkout scm
-        //    }
-        //}
         stage('SonarQube analysis') {
             when {
                 expression { DO_SONNAR == 'yes' }
@@ -37,10 +24,19 @@ pipeline{
                 sh "mvn clean install"
             }
         }
-        stage('deploy'){
+        stage("Human: Deploy") {
             steps{
-                //执行部署脚本
-                echo "deploy ......" 
+                script {                                                                                                                                                                                                                     
+                    input {
+                        message: '请选择需要部署的环境'
+                        ok: '开始部署'
+                        submitter：'这是什么。。'
+                        parameters: [choice(name: 'DO_DEPLOY', choices: '测试环境\n生产环境')]
+                    }
+                    steps {
+                        echo "正在部署${DO_DEPLOY}" 
+                    }
+                }
             }
         }
     }
