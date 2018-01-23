@@ -34,8 +34,8 @@ pipeline{
                         IS_DEPLOY = input message: "构建配置",
                         ok: "搞起",
                         parameters: [
-                            [name:'TEST',$class: BooleanParameterDefinition,defaultValue:false,description:'是否部署测试环境'],
-                            [name:'TEST',$class: BooleanParameterDefinition,defaultValue:false,description:'是否部署生产环境']
+                            [name:'TEST',$class: 'BooleanParameterDefinition', defaultValue:false, description:'是否部署测试环境'],
+                            [name:'TEST',$class: 'BooleanParameterDefinition', defaultValue:false, description:'是否部署生产环境']
                             //choice(name: 'TEST', choices: 'yes\nno' ,description: '是否部署测试环境' ,defaultChoice: 'no'),
                             //choice(name: 'ONLINE', choices: 'yes\nno',description: '是否部署生产环境' ,defaultChoice: 'no')
                         ]
