@@ -33,10 +33,7 @@ pipeline{
                         parameters: [choice(name: 'DO_DEPLOY',choices: '测试环境\n生产环境',description:'选择构建环境')]
                     }
                 }
-                when expression { DO_DEPLOY == '测试环境' }
-                steps{
-                    echo '正在部署测试环境'
-                }
+                echo "正在构建${params.DO_DEPLOY}"
             }
         }
     }
