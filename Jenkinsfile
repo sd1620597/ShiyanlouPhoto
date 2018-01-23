@@ -28,11 +28,11 @@ pipeline{
             steps{
                 script {
                     timeout(time:1,unit:'HOURS'){
-                        env.IS_DEPLOY=input message: '构建配置',
-                        //parameters: [choice(name: 'IS_DEPLOY',choices: '测试环境\n生产环境',description:'选择构建环境')]
-                        parameters: [choice(name: 'IS_DEPLOY',choices: '测试环境\n生产环境')]
+                        def DO_DEPLOY='辣鸡'
+                        input message: '构建配置',
+                        parameters: [choice(name: 'DO_DEPLOY',choices: '测试环境\n生产环境',description:'选择构建环境')]
                     }
-                    echo "正在部署"env.IS_DEPLOY
+                    echo "正在部署"env.DO_DEPLOY
                 }
             }
         }
