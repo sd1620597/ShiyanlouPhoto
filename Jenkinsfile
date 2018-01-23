@@ -34,7 +34,7 @@ pipeline{
                         parameters: [string(name: 'DO_DEPLOY', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')]
                     }
                 }
-                echo "正在构建${params.DO_DEPLOY}"
+                echo "正在构建${env.DO_DEPLOY}"
             }
         }
     }
