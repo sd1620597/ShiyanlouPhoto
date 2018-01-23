@@ -30,14 +30,14 @@ pipeline{
                 script {
                     timeout(time:1,unit:'HOURS'){
                         input message: '构建配置',
-                        parameters: [choice(name: 'DO_DEPLOY',choices: '测试环境\n生产环境',description:'选择构建环境')]
+                        parameters: [choice(name: 'DO_DEPLOY',choices: 'test\nonline',description:'选择构建环境')]
                     }
                 }
             }
         }
         stage("Deploy test") {
             when {
-                expression { params.DO_DEPLOY == '测试环境' }
+                expression { params.DO_DEPLOY == 'test' }
             }
             steps{
                 echo '正在构建测试环境'
@@ -45,7 +45,7 @@ pipeline{
         }
         stage("Deploy online"){
             when {
-                expression { params.DO_DEPLOY == '生产环境' }
+                expression { params.DO_DEPLOY == 'online' }
             }
             steps{
                 echo '正在构建生产环境'
