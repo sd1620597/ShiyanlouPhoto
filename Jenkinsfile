@@ -25,13 +25,11 @@ pipeline{
             }
         }
         stage("Human: Deploy") {
-            steps{
-                input {
-                    message: '请选择需要部署的环境'
-                    ok: '开始部署'
-                    submitter：'这是什么。。'
+            timeout(time:30,unit:'seconds'){
+                input message: '请选择需要部署的环境',ok: '开始部署',submitter：'这是什么。。',
                     parameters: [choice(name: 'DO_DEPLOY', choices: '测试环境\n生产环境')]
-                }
+            }
+            steps{
                 echo "正在部署${DO_DEPLOY}"
             }
         }
