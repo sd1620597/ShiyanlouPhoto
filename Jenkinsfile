@@ -32,9 +32,7 @@ pipeline{
                 script {
                     timeout(time:1,unit:'HOURS'){
                         input message: "构建配置",
-                        parameters: [
-                            choice(name: 'TEST', choices: '部署测试环境\n不部署测试环境'),
-                            choice(name: 'AAAA', choices: '111\n222')]
+                        parameters: [choice(name: 'TEST', choices: '部署测试环境\n不部署测试环境')]
                     }
                 }
                 echo "${params.TEST}"
