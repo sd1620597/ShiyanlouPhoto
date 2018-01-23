@@ -20,12 +20,12 @@ pipeline{
             }
         }
         
-        stage('mvn build'){
-            steps{
-                //mvn构建
-                sh "mvn clean install"
-            }
-        }
+        //stage('mvn build'){
+        //    steps{
+        //        //mvn构建
+        //        sh "mvn clean install"
+        //    }
+        //}
         
         stage("Human: Deploy") {
             steps{
@@ -33,11 +33,10 @@ pipeline{
                     timeout(time:1,unit:'HOURS'){
                         env.DO_DEPLOY=input message: "构建配置",
                         parameters: [
-                            choice(name: 'env.TEST', choices: '部署测试环境\n不部署测试环境'),
-                            choice(name: 'ONLINE', choices: '测试环境\n开发环境')]
+                            choice(name: 'env.TEST', choices: '部署测试环境\n不部署测试环境')]
                     }
                 }
-                echo "${env.TEST}"
+                echo "${env.DO_DEPLOY}"
             }
         }
     }
