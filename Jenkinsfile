@@ -42,7 +42,7 @@ pipeline{
             }
         }
         stage("Deploy online"){
-            when expression { DO_DEPLOY == '测试环境' }
+            when expression { DO_DEPLOY == '生产环境' }
             steps{
                 echo '正在构建生产环境'
             }
