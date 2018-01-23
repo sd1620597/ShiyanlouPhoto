@@ -38,7 +38,7 @@ pipeline{
                         ]
                     }
                 }
-                //echo "${env.DEPLOY["TEST"]}"
+                echo env.DEPLOY["TEST"]
                 //echo "${env.DEPLOY["ONLINE"]}"
             }
         }
