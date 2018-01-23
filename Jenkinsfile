@@ -27,7 +27,7 @@ pipeline{
         stage("Human: Deploy") {
             steps{
                 script {
-                    timeout(time:30,unit:'seconds'){
+                    timeout(time:30,unit:'SECONDS'){
                         //input message: '请选择需要部署的环境',ok: '开始部署',submitter：'这是什么。。',
                         input message: '请选择需要部署的环境',
                         parameters: [choice(name: 'DO_DEPLOY', choices: '测试环境\n生产环境')]
