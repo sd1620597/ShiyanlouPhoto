@@ -28,20 +28,14 @@ pipeline{
         stage("Human: Deploy") {
 
             steps{
-                //script {
-                //    timeout(time:1,unit:'HOURS'){
-                //       input message: "构建配置",
-                        //parameters: [choice(name: 'DO_DEPLOY',choices: 'test\nonline',description:"选择构建环境")]
-                //        parameters: [string(name: 'DO_DEPLOY', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')]
-                //    }
-                //}
-                //echo "正在构建${env.DO_DEPLOY}"
-                input {
-                    message:"Should we continue?",
-                    parameters {
-                        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                script {
+                    timeout(time:1,unit:'HOURS'){
+                       input message: "构建配置",
+                        parameters: [choice($class: ChoiceParameterDefinition,name: 'DO_DEPLOY',choices: 'test\nonline',description:"选择构建环境")]
+                        //parameters: [string(name: 'DO_DEPLOY', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')]
                     }
                 }
+                echo "正在构建${env.DO_DEPLOY}"
             }
         }
     }
