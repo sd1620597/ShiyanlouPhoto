@@ -34,7 +34,7 @@ pipeline{
                         env.DO_DEPLOY=input message: "构建配置",
                         parameters: [
                             choice(name: 'TEST', choices: '部署测试环境\n不部署测试环境'),
-                            choice(name: 'TEST', choices: '111\n222')]
+                            choice(name: 'AAAA', choices: '111\n222')]
                     }
                 }
                 echo "${env.DO_DEPLOY}"
