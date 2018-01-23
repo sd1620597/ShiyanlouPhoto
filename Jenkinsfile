@@ -34,8 +34,10 @@ pipeline{
                         IS_DEPLOY = input message: "构建配置",
                         ok: "搞起",
                         parameters: [
-                            choice(name: 'TEST', choices: 'yes\nno' ,description: '是否部署测试环境' ,defaultChoice: 'no'),
-                            choice(name: 'ONLINE', choices: 'yes\nno',description: '是否部署生产环境' ,defaultChoice: 'no')
+                            [name:'TEST',$class: BooleanParameterDefinition,defaultValue:false,description:'是否部署测试环境'],
+                            [name:'TEST',$class: BooleanParameterDefinition,defaultValue:false,description:'是否部署生产环境']
+                            //choice(name: 'TEST', choices: 'yes\nno' ,description: '是否部署测试环境' ,defaultChoice: 'no'),
+                            //choice(name: 'ONLINE', choices: 'yes\nno',description: '是否部署生产环境' ,defaultChoice: 'no')
                         ]
                     }
                 }
@@ -46,7 +48,7 @@ pipeline{
         
         stage("部署测试环境"){
             when {
-                expression { IS_DEPLOY["TEST"] == 'yes' }
+                expression { IS_DEPLOY["TEST"] == true }
             }
             steps {
                 echo "部署测试环境中……"
@@ -55,7 +57,7 @@ pipeline{
         
         stage("部署生产环境"){
             when {
-                expression { IS_DEPLOY["ONLINE"] == 'yes' }
+                expression { IS_DEPLOY["ONLINE"] == true }
             }
             steps {
                 echo "部署生产环境中……"
