@@ -41,8 +41,6 @@ pipeline{
                         ]
                     }
                 }
-                echo IS_DEPLOY["DEPLOY_TEST"]
-                echo IS_DEPLOY["DEPLOY_ONLINE"]
             }
         }
         
