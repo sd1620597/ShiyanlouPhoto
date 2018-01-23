@@ -25,7 +25,13 @@ pipeline{
             }
         }
         stage("Human: Deploy") {
+            input {
+                message: '构建配置',
+                ok:"ok",
+                parameters: [choice(name: 'DO_DEPLOY',choices: '测试环境\n生产环境',description:'选择构建环境')]
+            }
             steps{
+                echo '111'
                 //script {
                     //timeout(time:1,unit:'HOURS'){
                         //input message: '构建配置',
@@ -34,11 +40,6 @@ pipeline{
                     //}
                     //echo "正在部署"${DO_DEPLOY}
                 //}
-                input {
-                    message: '构建配置',
-                    ok:"ok",
-                    parameters: [choice(name: 'DO_DEPLOY',choices: '测试环境\n生产环境',description:'选择构建环境')]
-                }
             }
         }
     }
