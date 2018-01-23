@@ -35,7 +35,7 @@ pipeline{
                             description:'选择构建环境'
                         )
                     ]
-                    echo "正在部署${DO_DEPLOY}"
+                    echo "正在部署"DO_DEPLOY
                 }
             }
         }
