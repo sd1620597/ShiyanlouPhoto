@@ -19,24 +19,25 @@ pipeline{
                 }
             }
         }
+        
         stage('mvn build'){
             steps{
                 //mvn构建
                 sh "mvn clean install"
             }
         }
+        
         stage("Human: Deploy") {
-
             steps{
                 script {
                     timeout(time:1,unit:'HOURS'){
                         env.DO_DEPLOY=input message: "构建配置",
-                        //parameters: [name: 'DO_DEPLOY',choices: 'test\nonline',description:"选择构建环境")]
-                        parameters: [choice(name: 'DO_DEPLOY', choices: '测试环境\n开发环境')]
-                        //parameters: [string(name: 'DO_DEPLOY', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')]
+                        parameters: [
+                            choice(name: 'DO_DEPLOY_TEST', choices: '测试环境\n开发环境'),
+                            choice(name: 'DO_DEPLOY_ONLINE', choices: '测试环境\n开发环境')]
                     }
                 }
-                echo "正在构建:${env.DO_DEPLOY}"
+                echo ${env.DO_DEPLOY}
             }
         }
     }
