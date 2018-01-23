@@ -33,13 +33,31 @@ pipeline{
                     timeout(time:1,unit:'HOURS'){
                         IS_DEPLOY = input message: "构建配置",
                         parameters: [
-                            choice(name: 'TEST', choices: '部署测试环境\n不部署测试环境'),
-                            choice(name: 'ONLINE', choices: '部署生产环境\n不部署生产环境')
+                            choice(name: 'TEST', choices: 'yes\nno' ,description: '是否部署测试环境'),
+                            choice(name: 'ONLINE', choices: 'yes\nno',description: '是否部署生产环境')
                         ]
                     }
                 }
                 echo IS_DEPLOY["TEST"]
-                //echo "${env.DEPLOY["ONLINE"]}"
+                echo IS_DEPLOY["ONLINE"]
+            }
+        }
+        
+        stage("部署测试环境"){
+            when {
+                expression { IS_DEPLOY["TEST"] == 'yes' }
+            }
+            steps {
+                echo "部署测试环境中……"
+            }
+        }
+        
+        stage("部署生产环境"){
+            when {
+                expression { IS_DEPLOY["ONLINE"] == 'yes' }
+            }
+            steps {
+                echo "部署生产环境中……"
             }
         }
     }
