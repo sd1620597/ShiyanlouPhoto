@@ -33,7 +33,7 @@ pipeline{
                         input message: '构建配置',
                         parameters: [choice(name: 'DO_DEPLOY',choices: '测试环境\n生产环境',description:'选择构建环境')]
                     }
-                    echo "正在部署"${GIT_BRANCH}
+                    echo "正在部署"${params.DO_DEPLOY}
                 }
             }
         }
