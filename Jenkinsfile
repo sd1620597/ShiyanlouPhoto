@@ -2,7 +2,7 @@ pipeline{
     agent any
     parameters {
         choice(name: 'DO_SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
-        string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '111')
+        string(name: 'GIT_BRANCH', defaultValue: 'dev', description: '请输入需要构建的分支')
     }
     stages {
         stage('SonarQube analysis') {
@@ -33,7 +33,7 @@ pipeline{
                         input message: '构建配置',
                         parameters: [choice(name: 'DO_DEPLOY',choices: '测试环境\n生产环境',description:'选择构建环境')]
                     }
-                    echo "正在部署"${DO_DEPLOY}
+                    echo "正在部署"${GIT_BRANCH}
                 }
             }
         }
