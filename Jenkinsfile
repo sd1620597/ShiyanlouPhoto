@@ -20,12 +20,12 @@ pipeline{
             }
         }
         
-        //stage('mvn build'){
-        //    steps{
-        //        //mvn构建
-        //        sh "mvn clean install"
-        //    }
-        //}
+        stage('mvn build'){
+            steps{
+                //mvn构建
+                sh "mvn clean install"
+            }
+        }
         
         stage("Human: Deploy") {
             steps{
