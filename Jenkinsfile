@@ -2,6 +2,7 @@ pipeline{
     agent any
     parameters {
         choice(name: 'DO_SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
+        [$class: 'TextParameterDefinition', name: 'GIT_BRANCH']
     }
     stages {
         stage('SonarQube analysis') {
