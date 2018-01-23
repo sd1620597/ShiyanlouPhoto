@@ -27,7 +27,7 @@ pipeline{
         stage("Human: Deploy") {
             steps{
                 script {
-                    timeout(time:1,unit:HOURS){
+                    timeout(time:1,unit:'HOURS'){
                         input message: '构建配置',
                         parameters: {
                             choice(
