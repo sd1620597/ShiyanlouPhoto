@@ -32,6 +32,7 @@ pipeline{
                 script {
                     timeout(time:1,unit:'HOURS'){
                         IS_DEPLOY = input message: "构建配置",
+                        ok: "搞起",
                         parameters: [
                             choice(name: 'TEST', choices: 'yes\nno' ,description: '是否部署测试环境' ,defaultChoice: 'no'),
                             choice(name: 'ONLINE', choices: 'yes\nno',description: '是否部署生产环境' ,defaultChoice: 'no')
