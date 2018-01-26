@@ -29,6 +29,7 @@ pipeline{
                 }
             }
         }
+        
         stage("选择：构建环境") {
             steps{
                 script {
@@ -63,6 +64,11 @@ pipeline{
             steps {
                 echo "部署生产环境中……"
             }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
         }
     }
 }
