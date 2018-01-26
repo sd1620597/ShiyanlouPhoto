@@ -29,10 +29,9 @@ pipeline{
                 }
             }
         }
-        stage("Human: Deploy") {
+        stage("选择：构建环境") {
             steps{
                 script {
-                    //echo '选择构建环境'
                     timeout(time:1,unit:'HOURS'){
                         IS_DEPLOY = input message: "构建配置",
                         ok: "搞起",
