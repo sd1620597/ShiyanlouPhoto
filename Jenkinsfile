@@ -28,7 +28,6 @@ pipeline{
                     }
                 }
             }
-            echo '构建完成'
         }
         stage("Human: Deploy") {
             steps{
@@ -45,6 +44,7 @@ pipeline{
                         ]
                     }
                 }
+                echo '选择构建环境'
             }
         }
         
