@@ -29,6 +29,7 @@ pipeline{
         
         stage("Human: Deploy") {
             steps{
+                echo '选择构建环境'
                 script {
                     timeout(time:1,unit:'HOURS'){
                         IS_DEPLOY = input message: "构建配置",
