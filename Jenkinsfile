@@ -5,7 +5,7 @@ pipeline{
         string(name: 'GIT_BRANCH', defaultValue: 'dev', description: '请输入需要构建的分支')
     }
     stages {
-        stage('编译'){
+        stage('代码构建'){
             parallel {
                 stage('SonarQube扫描') {
                     when {
@@ -21,7 +21,7 @@ pipeline{
                         }
                     }
                 }
-                stage('mvn build'){
+                stage('maven编译'){
                     steps{
                         //mvn构建
                         sh "mvn clean install"
