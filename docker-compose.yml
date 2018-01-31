@@ -4,4 +4,3 @@ services:
     image: sd1620597/test
     ports: 
       - 8888:8080
-    build: .
