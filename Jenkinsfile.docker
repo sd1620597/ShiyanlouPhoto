@@ -19,7 +19,7 @@ pipeline{
         
         stage('环境构建'){
             steps{
-                sh 'ansible-playbook test.yml'
+                sh 'ansible-playbook /etc/ansible/test.yml'
             }
         }
     }
