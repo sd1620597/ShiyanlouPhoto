@@ -11,6 +11,7 @@ pipeline{
         stage('docker镜像创建'){
             steps{
                 sh 'docker-compose build --pull'
+                sh 'docker-compose push'
             }
         }
         
