@@ -11,11 +11,11 @@ pipeline{
         
         stage('docker镜像创建'){
             steps{
-                //sh 'docker-compose build --pull'
-                //sh 'docker-compose push'
-                sh 'docker build -t sd1620597/${JOB_NAME} .'
-                sh 'docker push sd1620597/${JOB_NAME}'
-                echo '2'
+                sh 'docker-compose build --pull'
+                sh 'docker-compose push'
+                //sh 'docker build -t sd1620597/${JOB_NAME} .'
+                //sh 'docker push sd1620597/${JOB_NAME}'
+                //echo '2'
             }
         }
         
