@@ -17,7 +17,7 @@ pipeline{
         
         stage('环境构建'){
             steps{
-                sh 'docker-compose up'
+                sh 'ansible-playbook /etc/ansible/test.yml'
             }
         }
     }
