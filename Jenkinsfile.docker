@@ -11,6 +11,7 @@ pipeline{
             steps{
                 sh 'docker-compose build --pull'
                 sh 'docker-compose push'
+                sh 'docker-compose down --rmi all'
             }
         }
         
