@@ -18,7 +18,7 @@ pipeline{
         
         stage('环境构建'){
             steps{
-                sh 'ansible-playbook /etc/ansible/deploy.yml'
+                sh 'ansible-playbook /etc/ansible/deploy.yml -vvv'
             }
         }
     }
