@@ -3,16 +3,14 @@ pipeline{
     stages {
         stage('maven编译'){
             steps{
-                //sh "mvn clean install"
-                echo '1'
+                sh "mvn clean install"
             }
         }
         
         stage('docker镜像创建'){
             steps{
-                //sh 'docker-compose build --pull'
-                //sh 'docker-compose push'
-                echo '2'
+                sh 'docker-compose build --pull'
+                sh 'docker-compose push'
             }
         }
         
