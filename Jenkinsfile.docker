@@ -3,7 +3,7 @@ pipeline{
     stages {
         stage('maven编译'){
             steps{
-                #mvn构建
+                //mvn构建
                 sh "mvn clean install"
                 echo '1'
             }
