@@ -2,11 +2,14 @@ pipeline{
     agent any
     parameters {
         string(name:'TAG', description: '请输入要构建的TAG')
-        booleanParam(name: 'REROLL', defaultValue: true, description: '是否回退')
+        booleanParam(name: 'IS_REROLL', defaultValue: true, description: '是否回退')
     }
     stages {
 
         stage('maven编译'){
+            when{
+            
+            }
             steps{
                 sh "mvn clean install"
             }
