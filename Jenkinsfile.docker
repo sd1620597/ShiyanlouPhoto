@@ -8,21 +8,24 @@ pipeline{
     stages {
         stage('maven编译'){
             steps{
-                sh "mvn clean install"
+                //sh "mvn clean install"
+                echo '1'
             }
         }
         
         stage('docker镜像创建'){
             steps{
-                sh 'docker-compose build --pull'
-                sh 'docker-compose push'
-                sh 'docker-compose down --rmi all'
+                //sh 'docker-compose build --pull'
+                //sh 'docker-compose push'
+                //sh 'docker-compose down --rmi all'
+                echo '2'
             }
         }
         
         stage('环境构建'){
             steps{
-                sh 'ansible-playbook /etc/ansible/deploy.yml'
+                //sh 'ansible-playbook /etc/ansible/deploy.yml'
+                echo '3'
             }
         }
     }
