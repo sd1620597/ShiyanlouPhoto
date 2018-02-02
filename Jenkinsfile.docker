@@ -5,14 +5,15 @@ pipeline{
         //GitParameterDefinition(name:'TAG', type:'Tag', description:'获取tag')
         //[name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
     //}
-    stages('选择TAG') {
-        input{
-            parameters[
-                [name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
-            ]
+    stages {
+        stage('选择TAG') {
+            input{
+                parameters[
+                    [name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
+                ]
+            }
         }
     }
-    stages {
         stage('maven编译'){
             steps{
                 //sh "mvn clean install"
