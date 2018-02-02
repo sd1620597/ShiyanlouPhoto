@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters {
-        Git Parameter(name:'TAG', type:'Tag')
+        Git+Parameter(name:'TAG', type:'Tag')
         //GitParameterDefinition(name:'TAG', type:'Tag', description:'获取tag')
         //[name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
     }
