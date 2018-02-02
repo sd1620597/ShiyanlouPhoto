@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters {
-        string(name:'TAG', description: '请输入要构建的TAG')
+        string(name:'TAG', defaultValue:'', description: '请输入要构建的TAG')
         booleanParam(name: 'IS_REROLL', defaultValue: false, description: '是否回退')
     }
     stages {
