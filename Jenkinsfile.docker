@@ -1,30 +1,27 @@
 pipeline{
     agent any
-    parameters {
-        GitParameterDefinition(name:'TAG', type:'Tag', description:'获取tag')
+    //parameters {
+        //GitParameterDefinition(name:'TAG', type:'Tag', description:'获取tag')
         //[name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
-    }
+    //}
     stages {
         stage('maven编译'){
             steps{
-                //sh "mvn clean install"
-                echo '1'
+                sh "mvn clean install"
             }
         }
         
         stage('docker镜像创建'){
             steps{
-                //sh 'docker-compose build --pull'
-                //sh 'docker-compose push'
-                //sh 'docker-compose down --rmi all'
-                echo '2'
+                sh 'docker-compose build --pull'
+                sh 'docker-compose push'
+                sh 'docker-compose down --rmi all'
             }
         }
         
         stage('环境构建'){
             steps{
-                //sh 'ansible-playbook /etc/ansible/deploy.yml'
-                echo '3'
+                sh 'ansible-playbook /etc/ansible/deploy.yml'
             }
         }
     }
