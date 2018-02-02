@@ -11,7 +11,9 @@ pipeline{
                 scripts{
                     TAG = input message: "选择TAG",
                         ok: "搞起",
-                        parameters: [name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
+                        parameters: [
+                            [name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
+                        ]
                 }
             }
         }
