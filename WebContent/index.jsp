@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <h2>测试123123</h2>
+                <h2>123</h2>
             </div>
         </div>
         <div class="row">
