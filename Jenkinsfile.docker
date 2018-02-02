@@ -7,11 +7,10 @@ pipeline{
     //}
     stages {
         stage('选择TAG') {
-            steps{
-                input{
-                    parameters[
-                        [name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
-                    ]
+            scripts{
+                TAG = input message: "构建配置",
+                    ok: "搞起",
+                    parameters: [name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
                 }
             }
         }
