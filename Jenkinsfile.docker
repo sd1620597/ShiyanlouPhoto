@@ -8,7 +8,7 @@ pipeline{
 
         stage('maven编译'){
             when{
-                expression { IS_REROLL == 'false' }
+                expression { env.IS_REROLL == 'false' }
             }
             steps{
                 sh "mvn clean install"
@@ -17,7 +17,7 @@ pipeline{
         
         stage('docker镜像创建'){
             when{
-                expression { IS_REROLL == 'false' }
+                expression { env.IS_REROLL == 'false' }
             }
             steps{
                 sh 'docker-compose build --pull'
