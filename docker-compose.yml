@@ -1,7 +1,7 @@
 version: '3'
 services:
   docker_test:
-    image: sd1620597/${JOB_NAME}:${TAG}
+    image: sd1620597/${JOB_NAME}:${GIT_BRANCH}${TAG}
     ports: 
       - 8888:8080
     build: .
