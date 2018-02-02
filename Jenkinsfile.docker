@@ -1,9 +1,6 @@
 pipeline{
     agent any
     parameters {
-        Git_Parameter(name:'TAG', type:'Tag',  description:'获取tag')
-        //GitParameterDefinition(name:'TAG', type:'Tag', description:'获取tag')
-        //[name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
     }
     stages {
 
