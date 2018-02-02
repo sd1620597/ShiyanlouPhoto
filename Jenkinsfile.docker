@@ -1,7 +1,8 @@
 pipeline{
     agent any
     parameters {
-        [name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
+        GitParameterDefinition(name:'TAG', type:'Tag', description:'获取tag')
+        //[name:'TAG',$class: 'GitParameterDefinition', type:'Tag', description:'获取tag']
     }
     stages {
         stage('maven编译'){
