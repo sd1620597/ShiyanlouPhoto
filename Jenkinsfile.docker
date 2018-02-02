@@ -8,7 +8,7 @@ pipeline{
     stages {
         stage('选择TAG') {
             steps{
-                scripts{
+                script{
                     TAG = input message: "选择TAG",
                         ok: "搞起",
                         parameters: [
