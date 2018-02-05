@@ -31,7 +31,7 @@ pipeline{
                 env.PROFILE='test'
             }
             steps{
-                sh 'ansible-playbook -t docker_test /etc/ansible/deploy.yml'
+                sh 'ansible-playbook -e hosts=docker_test /etc/ansible/deploy.yml'
             }
         }
         stage('部署生产环境'){
@@ -39,7 +39,7 @@ pipeline{
                 env.PROFILE='prod'
             }
             steps{
-                sh 'ansible-playbook -t docker_prod /etc/ansible/deploy.yml'
+                sh 'ansible-playbook -e hosts=docker_prod /etc/ansible/deploy.yml'
             }
         }
     }
