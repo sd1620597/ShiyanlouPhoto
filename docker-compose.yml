@@ -4,5 +4,5 @@ services:
     image: sd1620597/${JOB_NAME}:${TAG}
     ports: 
       - 8888:8080
-    command: command: echo ${JOB_NAME}-${PROFILE}
+    command: echo ${JOB_NAME}-${PROFILE}
     build: .
