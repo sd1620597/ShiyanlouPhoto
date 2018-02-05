@@ -11,7 +11,8 @@ pipeline{
                 expression { env.IS_REROLL == 'false' }
             }
             steps{
-                sh "mvn clean install"
+                //sh "mvn clean install"
+                echo '1'
             }
         }
         
@@ -20,9 +21,10 @@ pipeline{
                 expression { env.IS_REROLL == 'false' }
             }
             steps{
-                sh 'docker-compose build --pull'
-                sh 'docker-compose push'
-                sh 'docker-compose down --rmi all'
+                //sh 'docker-compose build --pull'
+                //sh 'docker-compose push'
+                //sh 'docker-compose down --rmi all'
+                echo '2'
             }
         }
         
@@ -32,6 +34,12 @@ pipeline{
                     env.PROFILE='test'
                 }
                 sh 'ansible-playbook -e hosts=docker_test /etc/ansible/deploy.yml'
+            }
+        }
+        
+        stage('确认：是否部署生产环境'){
+            steps{
+                input message: 'Deploy to production?\nClick Proceed or Abort!'
             }
         }
         stage('部署生产环境'){
