@@ -39,9 +39,10 @@ pipeline{
         
         stage('确认：是否部署生产环境'){
             steps{
-                input message: 'Deploy to production?\nClick Proceed or Abort!'
+                input message: '是否继续部署生产环境', ok: '继续部署'
             }
         }
+        
         stage('部署生产环境'){
             steps{
                 script{
