@@ -26,7 +26,18 @@ pipeline{
             }
         }
         
-        stage('环境构建'){
+        stage('部署测试环境'){
+            scripts{
+                env.PROFILE='test'
+            }
+            steps{
+                sh 'ansible-playbook /etc/ansible/deploy.yml'
+            }
+        }
+        stage('部署生产环境'){
+            scripts{
+                env.PROFILE='prod'
+            }
             steps{
                 sh 'ansible-playbook /etc/ansible/deploy.yml'
             }
