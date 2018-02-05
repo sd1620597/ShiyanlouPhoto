@@ -27,18 +27,18 @@ pipeline{
         }
         
         stage('部署测试环境'){
-            script{
-                env.PROFILE='test'
-            }
             steps{
+                script{
+                    env.PROFILE='test'
+                }
                 sh 'ansible-playbook -e hosts=docker_test /etc/ansible/deploy.yml'
             }
         }
         stage('部署生产环境'){
-            script{
-                env.PROFILE='prod'
-            }
             steps{
+                script{
+                    env.PROFILE='prod'
+                }
                 sh 'ansible-playbook -e hosts=docker_prod /etc/ansible/deploy.yml'
             }
         }
