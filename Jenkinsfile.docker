@@ -1,10 +1,19 @@
 pipeline{
     agent any
-    parameters {
-        string(name:'TAG', defaultValue:'', description: '请输入要构建的TAG')
-        booleanParam(name: 'IS_REROLL', defaultValue: false, description: '是否回退')
-        GitParameterDefinition(name: 'TAG', type: 'PT_BRANCH')
-    }
+    //parameters {
+    //    string(name:'TAG', defaultValue:'', description: '请输入要构建的TAG')
+    //    booleanParam(name: 'IS_REROLL', defaultValue: false, description: '是否回退')
+    //    GitParameterDefinition(name: 'TAG', type: 'PT_BRANCH')
+    //}
+    input(
+  id: 'Proceed1', message: 'Specifiy QA Candiate Branch', 
+  parameters: [
+    [$class: 'GitParameterDefinition', 
+     name: 'candidateBranch', 
+     type: 'PT_BRANCH', 
+     ]
+  ]
+)
     stages {
 
         stage('maven编译'){
