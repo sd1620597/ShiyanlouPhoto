@@ -5,7 +5,6 @@ pipeline{
     //    booleanParam(name: 'IS_REROLL', defaultValue: false, description: '是否回退')
     //    GitParameterDefinition(name: 'TAG', type: 'PT_BRANCH')
     //}
-    input(
   id: 'Proceed1', message: 'Specifiy QA Candiate Branch', 
   parameters: [
     [$class: 'GitParameterDefinition', 
@@ -13,7 +12,6 @@ pipeline{
      type: 'PT_BRANCH', 
      ]
   ]
-)
     stages {
 
         stage('maven编译'){
