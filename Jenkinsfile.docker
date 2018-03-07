@@ -5,12 +5,12 @@ pipeline{
     //    booleanParam(name: 'IS_REROLL', defaultValue: false, description: '是否回退')
     //    GitParameterDefinition(name: 'TAG', type: 'PT_BRANCH')
     //}
-  parameters: [
+  parameters {
     [$class: 'GitParameterDefinition', 
      name: 'candidateBranch', 
      type: 'PT_BRANCH', 
      ]
-  ]
+  }
     stages {
 
         stage('maven编译'){
